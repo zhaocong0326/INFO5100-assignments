@@ -1,0 +1,13 @@
+Answer: 6
+Operation Order:
+
+ B b = new B();
+ --> b.addAll(list);//list.size()=3
+ 
+ --->addCount += c.size(); //b.getAddCount()=3
+ 
+ -->addCount++; traverse total three times 
+ 
+ --> b.getAddCount()=6； & b.getI()=0;
+ 
+ Then Print(6 + 0 = 6).
