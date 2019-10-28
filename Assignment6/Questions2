@@ -1,4 +1,4 @@
-Write two differences between ArrayList and LinkedList:
+II. Write two differences between ArrayList and LinkedList. (Score 1)
 
 ArrayList and LinkedList both implements List interface and maintains insertion order. Both are non synchronized classes.
 
