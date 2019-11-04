@@ -1,0 +1,7 @@
+Try to attempt every question and keep practising from other online sites.
+Questions
+Write a program that read sentences from a file and reverse sentences word by word. After reverse, create a new file to save sentences. (Extreme corner case is not mandatory.)
+
+Example:
+Input file: the sky is blue.
+Output file: blue is sky the.
