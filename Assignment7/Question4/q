@@ -1,0 +1,22 @@
+
+Write a program that calculate the sum value in an array of ints using 4 threads. You should construct an 4,000,000 long array of random numbers and return the sum of the array. Please finish those two method: generateRandomArray and sum.
+
+public class SumValue {
+    
+    /*generate array of random numbers*/
+    static void generateRandomArray(int[] arr){
+
+    }
+
+    /*get sum of an array using 4 threads*/
+    static long sum(int[] arr){
+        return 0;
+    }
+
+    public static void main(String[] args){
+        int[] arr = new int[4000000];
+        generateArray(arr);
+        long sum = sum(arr);
+        System.out.println("Sum: " + sum);
+    }
+}
