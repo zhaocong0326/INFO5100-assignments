@@ -45,21 +45,21 @@ public class SumValue {
 
     }
 
-    public static long testAnswer(int[] arr){
+    public static long testAnswer(int[] array){
         long sum = 0;
-        for(int i = 0; i < arr.length; i++){
-            sum = sum + arr[i];
+        for(int i = 0; i < array.length; i++){
+            sum = sum + array[i];
         }
         return sum;
     }
 
     public static void main(String[] args) {
-        int[] arr = new int[4000000];
-        generateRandomArray(arr);
+        int[] array = new int[4000000];
+        generateRandomArray(array);
 
-        long sum = sum(arr);
+        long sum = sum(array);
         System.out.println("sum: " + sum);
-        long answer = testAnswer(arr);
+        long answer = testAnswer(array);
         System.out.println("Answer: " + answer);
     }
 
