@@ -29,8 +29,8 @@ public class SumValue {
         int[] array;
         int begin, end;
         private long sum = 0;
-        ThreadSum(int[] arr, int begin, int end){
-            this.array = arr;
+        ThreadSum(int[] array, int begin, int end){
+            this.array = array;
             this.begin = begin;
             this.end = end;
         }
