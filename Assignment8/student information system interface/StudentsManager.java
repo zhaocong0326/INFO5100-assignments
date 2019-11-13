@@ -7,13 +7,10 @@ public class StudentsManager {
 	private Map<String, Student> map = new HashMap<String, Student>();
 
 	public void add(Student student) throws RuntimeException {
-		String id = student.getId();
-		Student s = map.get(id);
-		if (s == null) {
+		String studentId = student.getId();
+		if (map.get(studentId) == null) {
 			map.put(student.getId(), student);
-		} else {
-			throw new RuntimeException("Student with id -> " + id + " is already added");
-		}
+		} 
 	}
 
 
