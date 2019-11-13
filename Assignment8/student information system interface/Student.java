@@ -2,7 +2,7 @@ public class Student {
 	private String id;
 	private String name;
 	private String gender;
-	
+
 	public Student() {
 
 	}
@@ -11,13 +11,13 @@ public class Student {
 		this.name = name;
 	}
 
-    public Student(String id, String name, String gender) {
-        this.id = id;
-        this.name = name;
-        this.gender = gender;
-    }
+	public Student(String id, String name, String gender) {
+		this.id = id;
+		this.name = name;
+		this.gender = gender;
+	}
 
-    public String getId() {
+	public String getId() {
 		return id;
 	}
 
@@ -33,12 +33,12 @@ public class Student {
 		this.name = name;
 	}
 
-    public String getGender() {
-        return gender;
-    }
+	public String getGender() {
+		return gender;
+	}
 
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
 
 }
