@@ -2,14 +2,14 @@ import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
 
 public class StudentInfoSystem implements TableModel{
-	private StudentsManager manager;
+	private Admain admain;
 
-	public StudentInfoSystem(StudentsManager manager) {
-		this.manager = manager;
+	public StudentInfoSystem(Admain manager) {
+		this.admain = manager;
 	}
 
 	public int getRowCount() {
-		return manager.getStudentCount();
+		return admain.getStudentNumber();
 	}
 
 	public int getColumnCount() {
@@ -22,7 +22,7 @@ public class StudentInfoSystem implements TableModel{
 		} else if (columnIndex == 1){
 			return "Name";
 		} else {
-			return "gender";
+			return "Gender";
 		}
 	}
 
@@ -34,19 +34,6 @@ public class StudentInfoSystem implements TableModel{
 
 		return false;
 	}
-
-	public Object getValueAt(int rowIndex, int columnIndex) {
-		Student s = manager.getStudents().get(rowIndex);
-		if (columnIndex == 0) {
-			return s.getId();
-		} else if (columnIndex == 1){
-			return s.getName();
-		} else {
-			return s.getGender();
-		}
-
-	}
-
 	public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
 
 	}
@@ -57,5 +44,17 @@ public class StudentInfoSystem implements TableModel{
 	public void removeTableModelListener(TableModelListener l) {
 
 	}
+
+	public Object getValueAt(int rowIndex, int columnIndex) {
+		Student student = admain.getStudents().get(rowIndex);
+		if (columnIndex == 0) {
+			return student.getId();
+		} else if (columnIndex == 1){
+			return student.getName();
+		} else {
+			return student.getGender();
+		}
+	}
+	
 
 }
