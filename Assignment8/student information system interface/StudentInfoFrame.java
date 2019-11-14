@@ -7,15 +7,16 @@ public class StudentInfoFrame extends JFrame {
 	private JComboBox genderText;
 	private JButton add, delete;
 	private JTable studentsInfoTable;
-	private StudentInfoSystem  model;
+	private StudentInfoSystem  studentInfoSystem;
 	private StudentsManager studentManager;
 
 	StudentInfoFrame() {
 		create();
 		Container con = getContentPane();
 		add(con);
-		addListeners();
 		visible();
+		addListeners();
+
 	}
 
 	public void create() {
@@ -32,16 +33,16 @@ public class StudentInfoFrame extends JFrame {
 
 		try {
 			studentManager = new StudentsManager();
-			model = new StudentInfoSystem(studentManager);
+			studentInfoSystem = new StudentInfoSystem(studentManager);
 		} catch (Exception e) {
 		}
 
-		studentsInfoTable = new JTable(model);
+		studentsInfoTable = new JTable(studentInfoSystem);
 	}
 
 	public void add(Container con) {
-		BorderLayout b = new BorderLayout();
-		con.setLayout(b);
+		BorderLayout borderLayout = new BorderLayout();
+		con.setLayout(borderLayout);
 		con.add(new JScrollPane(studentsInfoTable), "South");
 		addComponent(con);
 
@@ -57,7 +58,7 @@ public class StudentInfoFrame extends JFrame {
 		p.add(genderText);
 		p.add(add);
 		p.add(delete);
-		con.add(p, BorderLayout.NORTH);
+		con.add(p);
 
 	}
 	
@@ -73,7 +74,7 @@ public class StudentInfoFrame extends JFrame {
 		student = getText(student);
 		studentManager.add(student);
 		studentsInfoTable.updateUI();
-		JOptionPane.showMessageDialog(this,  student.getId()  + student.getName() + "add successfully!");
+		JOptionPane.showMessageDialog(this,  student.getId() + "  " +  student.getName() +  "  " + student.getGender() + " add successfully!");
 	}
 	
 
@@ -83,7 +84,7 @@ public class StudentInfoFrame extends JFrame {
 		student = getText(student);
 		studentManager.delete(student.getId());
 		studentsInfoTable.updateUI();
-		JOptionPane.showMessageDialog(this, student.getId()  + student.getName() + "delete successfully!");
+		JOptionPane.showMessageDialog(this, student.getId() + "  "  + student.getName() + "  " + " delete successfully!");
 	}
 
 	public void addListeners() {
@@ -92,7 +93,7 @@ public class StudentInfoFrame extends JFrame {
 	}
 
 	public void visible() {
-		setSize(600, 600);
+		setSize(800, 600);
 		setVisible(true);
 	}
 
