@@ -4,11 +4,11 @@ import java.awt.*;
 public class StudentInfoFrame extends JFrame {
 	private JLabel IdLabel, nameLabel, genderLable;
 	private JTextField IdText, nameText;
-	private JComboBox genderText;
+	private JComboBox gender;
 	private JButton add, delete;
 	private JTable studentsInfoTable;
 	private StudentInfoSystem  studentInfoSystem;
-	private StudentsManager studentManager;
+	private Admain manager;
 
 	StudentInfoFrame() {
 		create();
@@ -17,6 +17,10 @@ public class StudentInfoFrame extends JFrame {
 		visible();
 		addListeners();
 
+	}
+
+	public static void main(String[] args) {
+		new StudentInfoFrame();
 	}
 
 	public void create() {
@@ -29,13 +33,10 @@ public class StudentInfoFrame extends JFrame {
 
 		IdText = new JTextField(10);
 		nameText = new JTextField(10);
-		genderText = new JComboBox(new String[] { "Male", "Famale"});
+		gender = new JComboBox(new String[] { "Male", "Famale"});
 
-		try {
-			studentManager = new StudentsManager();
-			studentInfoSystem = new StudentInfoSystem(studentManager);
-		} catch (Exception e) {
-		}
+		manager = new Admain();
+		studentInfoSystem = new StudentInfoSystem(manager);
 
 		studentsInfoTable = new JTable(studentInfoSystem);
 	}
@@ -44,45 +45,41 @@ public class StudentInfoFrame extends JFrame {
 		BorderLayout borderLayout = new BorderLayout();
 		con.setLayout(borderLayout);
 		con.add(new JScrollPane(studentsInfoTable), "South");
-		addComponent(con);
+		addMainComponent(con);
 
 	}
 	
-	public void addComponent(Container con) {
-		JPanel p = new JPanel();
-		p.add(IdLabel);
-		p.add(IdText);
-		p.add(nameLabel);
-		p.add(nameText);
-		p.add(genderLable);
-		p.add(genderText);
-		p.add(add);
-		p.add(delete);
-		con.add(p);
+	public void addMainComponent(Container con) {
+		JPanel panel = new JPanel();
+		panel.add(IdLabel);
+		panel.add(IdText);
+		panel.add(nameLabel);
+		panel.add(nameText);
+		panel.add(genderLable);
+		panel.add(gender);
+		panel.add(add);
+		panel.add(delete);
+		con.add(panel);
 
 	}
 	
-	public Student getText(Student student) {
+	public Student getTextContent(Student student) {
 		student.setId(IdText.getText());
 		student.setName(nameText.getText());
-		student.setGender(genderText.getSelectedItem().toString());
+		student.setGender(gender.getSelectedItem().toString());
 		return student;
 	}
 	
 	public void add () {
 		Student student = new Student();
-		student = getText(student);
-		studentManager.add(student);
+		manager.add(getTextContent(student));
 		studentsInfoTable.updateUI();
 		JOptionPane.showMessageDialog(this,  student.getId() + "  " +  student.getName() +  "  " + student.getGender() + " add successfully!");
 	}
-	
 
-	
 	public void delete() {
 		Student student = new Student();
-		student = getText(student);
-		studentManager.delete(student.getId());
+		manager.delete(getTextContent(student).getId());
 		studentsInfoTable.updateUI();
 		JOptionPane.showMessageDialog(this, student.getId() + "  "  + student.getName() + "  " + " delete successfully!");
 	}
@@ -97,10 +94,5 @@ public class StudentInfoFrame extends JFrame {
 		setVisible(true);
 	}
 
-	
-	public static void main(String[] args) {
-		new StudentInfoFrame();
-	}
-	
 	
 }
